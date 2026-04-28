@@ -50,7 +50,7 @@ class CNN(nn.Module):
         )  # salida : tensor 64x17x20
 
         # la salida se pasa por una fully connected, 64x17x20
-        self.fc = nn.Linear(64 * 17 * 20, dim_out)
+        self.fc = nn.Linear(64*17*20, dim_out)
 
     def forward(self, x):
         # primera convolucion
@@ -64,7 +64,7 @@ class CNN(nn.Module):
         x = self.relu2(x)
         x = self.pooling2(x)
         # tranasformamos la matriz a un vector
-        x = x.view(-1, 64 * 17 * 20)
+        x = x.view(-1, 64*17*20)
         # la pasamos por la fully connected
         x = self.fc(x)
         return x
@@ -104,7 +104,7 @@ if __name__=="__main__":
         modelo=modelo,
         dataset_entrenamiento=dataset_entrenamiento,
         dataset_validation=dataset_validation,
-        epocas=15, # de acuerdo con los experimentos realizados, el algoritmo aprende hasta la iteración número 15 y luego oscila
+        epocas=30, # de acuerdo con los experimentos realizados, el algoritmo aprende hasta la iteración número 15 y luego oscila
         batch_size=32,
         lr=0.001,
         device=device,
